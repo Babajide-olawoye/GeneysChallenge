@@ -1,3 +1,5 @@
+package org.example;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+
 
 
 public class TestRyanairWeb {
@@ -27,16 +30,25 @@ public class TestRyanairWeb {
 
     @Test
     public void urlTest(){
-        Assert.assertNotEquals("https://www.ryanair.com/",webDriver.getCurrentUrl());
+
+        Assert.assertTrue(webDriver.getCurrentUrl().startsWith("https://www.ryanair.com/"));
     }
 
-    @Test(dependsOnMethods = "urlTest")
+    @Test
     public void flightTest(){
         int expectedNumberOfPeople = 4;
         String expectedDepartureDate = "Wed, 20 Sept";
         String expectedReturnDate = "Tue, 26 Sept";
         int actualNUmberOfPeople;
 
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys(Keys.BACK_SPACE);
+        webDriver.findElement(By.id("input-button__departure")).sendKeys("Dublin");
         webDriver.findElement(By.id("input-button__destination")).sendKeys("Spain");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span[data-id=\"BCN\"]")));
 
@@ -151,6 +163,11 @@ public class TestRyanairWeb {
         wait.until(ExpectedConditions.urlContains("https://www.ryanair.com/ie/en/trip/flights/seats"));
         System.out.println(webDriver.getCurrentUrl());
         Assert.assertTrue(webDriver.getCurrentUrl().startsWith("https://www.ryanair.com/ie/en/trip/flights/seats"));
+
+    }
+
+    @Test
+    public void seatSelectionTest(){
 
     }
 
