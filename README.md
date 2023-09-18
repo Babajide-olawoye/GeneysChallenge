@@ -17,9 +17,11 @@ Coding challenge
 - **Test Description**: Testing the ryanair homepage url
 - **Expected Output**: https://www.ryanair.com/
 - **Actual Output**: https://www.ryanair.com/ie/en
+  
+![Capture](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/5e4c483b-107a-4c80-b4c5-91b0d9edb065)
 
 ### Test Case 2: Search for a flights
-- **Test Description**: Testing the ryanair homepage url
+- **Test Description**: When search button is clicked, page should redirect to page with suggested flights and contains the correct details
 - **Test Input**: 
   - Departure: Dublin
   - Destination: Barcelona
@@ -31,6 +33,9 @@ Coding challenge
 - **Expected Output**: Page with suggested flights is loaded with correct dates and number of persons
 - **Actual Output**:
 
+![PassengerCount](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/d0f99b10-209c-43b7-a71a-eae2c5985b3b)
+![DateTest](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/65922a05-3e44-4ab2-9943-f98986903a77)
+
 ### Test Case 3:  Select suggested flights
 - **Test Description**: Once flights are choosen then  the "Log in to myRyanair” and “Passengers” section appear under selected flights; “Passengers” section is disabled
 - **Test Input**:
@@ -38,10 +43,16 @@ Coding challenge
 - **Expected Output**: "Log in to myRyanair” and “Passengers” section appears
 - **Actual Output**:  "Log in to myRyanair” and “Passengers” section appear
 
+![LoginRyanSection](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/2858e884-ce78-4ce3-ac0f-6106c4c2dad5)
+![PassengerSec](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/581aece5-56bd-47e0-b685-f6b88d8bbadf)
+
 ### Test Case 4: Choose “Log in later"
 - **Test Description**: When we choose “Log in later", the Passengers” section becomes active
 - **Expected Output**: Passengers” section becomes active
 - **Actual Output**: Passengers” section became active
+
+![ll](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/fe6968da-95b0-467f-be65-ebf5d028a9d0)
+
 
 ### Test Case 5: Click continue after inputting Passenger's field
 - **Test Description**: Enter any valid values in fields in “Passengers” section and click continue
@@ -52,6 +63,8 @@ Coding challenge
 - Passenger 4 = Mr. Mark Ola
 - **Expected Output**: Redirect to "Where would you like to sit?” page for the first flight is loaded
 - **Actual Output**: Redirect to "Where would you like to sit?” page for the first flight is loaded
+
+![finalTest](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/bb52a3de-bc71-4b45-b1e0-b8113669cd7c)
 
 ### Test Case 6: Choose seats
 - **Test Description**: Choose any available seats 
