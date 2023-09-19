@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-
+import java.util.List;
 
 
 public class TestRyanairWeb {
@@ -20,7 +20,7 @@ public class TestRyanairWeb {
     @BeforeClass
     private void setUp(){
         webDriver = new ChromeDriver();
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         webDriver.get("https://www.ryanair.com/");
         webDriver.manage().window().maximize();
         //This clicks "Yes, I agree" regarding cookies
@@ -166,11 +166,66 @@ public class TestRyanairWeb {
 
     }
 
-    @Test
-    public void seatSelectionTest(){
+    @Test(dependsOnMethods = "sittingPageTest")
+    public void seatSelectionFirstFlight(){
+        seatSelection("button[data-ref=\"seats-action__button-continue\"]", "button[data-ref=\"seats-action__button-next\"]");
+        Assert.assertTrue(webDriver.findElement(By.cssSelector("button[data-ref=\"seats-action__button-continue\"]")).isDisplayed());
+    }
+
+    @Test(dependsOnMethods = "seatSelectionFirstFlight")
+    public void seatSelectionSecondFlight(){
+        seatSelection("button[data-ref=\"enhanced-takeover-beta-desktop__dismiss-cta\"]", "button[data-ref=\"seats-action__button-continue\"]");
+        webDriver.findElement(By.cssSelector("button[data-ref=\"enhanced-takeover-beta-desktop__dismiss-cta\"]")).click();
+        wait.until(ExpectedConditions.urlContains("https://www.ryanair.com/ie/en/trip/flights/bags"));
+        Assert.assertTrue(webDriver.getCurrentUrl().startsWith("https://www.ryanair.com/ie/en/trip/flights/bags"));
 
     }
 
+
+
+    public void seatSelection(String lookoutButtonString, String nextOptionButtonString){
+        //Click ok on popup
+        boolean seatsChosesComplete = false;
+        By lookoutButtonCSS = By.cssSelector(lookoutButtonString);
+
+        closepopupdisplayed();
+        By buttonsWithClassStartingWithSeat = By.cssSelector("button[class^='seatmap__seat']:not([class*='seatmap__seat--selected']):not([class*='seatmap__seat--extraleg'])");
+        List<WebElement> seatButtons = webDriver.findElements(buttonsWithClassStartingWithSeat);
+
+
+        while (!seatsChosesComplete){
+
+            for (int i = 0; i < 4; i++) {
+                wait.until(ExpectedConditions.elementToBeClickable(seatButtons.get(0)));
+                seatButtons.get(0).click();
+                seatButtons.remove(0);
+            }
+
+
+            webDriver.findElement(By.cssSelector(nextOptionButtonString)).click();
+
+            try{
+                wait.until(ExpectedConditions.visibilityOfElementLocated(lookoutButtonCSS));
+                seatsChosesComplete = webDriver.findElement(lookoutButtonCSS).isDisplayed();
+            }catch (TimeoutException e) {
+                System.out.println("Seat chooen were invalid. Possibly because of child seat selections");
+            }
+
+            closepopupdisplayed();
+        }
+
+    }
+
+    public void closepopupdisplayed() {
+        By popupLocator = By.cssSelector("ry-dialog");
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(popupLocator));
+            webDriver.findElement(By.cssSelector(".seats-modal__cta")).click();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            System.out.println("No popup found");
+        }
+    }
 
 
     @AfterClass
