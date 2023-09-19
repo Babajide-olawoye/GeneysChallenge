@@ -61,16 +61,25 @@ Coding challenge
 - Passenger 2 = Mrs. Joanna Ola
 - Passenger 3 = Mr. Joshua Jr. Ola
 - Passenger 4 = Mr. Mark Ola
-- **Expected Output**: Redirect to "Where would you like to sit?” page for the first flight is loaded
-- **Actual Output**: Redirect to "Where would you like to sit?” page for the first flight is loaded
+- **Expected Output**: Redirect to "Where would you like to sit?” page for the first flight is loaded: https://www.ryanair.com/ie/en/trip/flights/seats
+- **Actual Output**: Redirect to "Where would you like to sit?” page for the first flight is loaded: https://www.ryanair.com/ie/en/trip/flights/seats
 
 ![finalTest](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/bb52a3de-bc71-4b45-b1e0-b8113669cd7c)
 
 ### Test Case 6: Choose seats
-- **Test Description**: Choose any available seats 
-- **Expected Output**: "Where would you like to sit?” page for the second flight is loaded
+- **Test Description**: Choose any available seats and click "Next Flight" button
+- **Test Input**:
+- The first four valid seat selections
+- **Expected Output**: "The "Next Flight" button changes to "Continue" button, meaning the seating selection was successful.
+- **Actual Output**: The "Next Flight" button changes to "Continue" button.
+
+![Capture4](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/b9f934db-b949-4fa1-bcda-5a2ca80cb52b)   ![Capture](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/f7a6881f-2e93-487a-8177-2ee496a9f28c)
 
 ### Test Case 7: Choose seats
 - **Test Description**: Choose any available seats for second flight and click continue
-- **Expected Output**: "What bags are you taking on board?” page is loaded
+- **Test Input**:
+- The first four valid seat selections
+- **Expected Output**: "What bags are you taking on board?” page is loaded: "https://www.ryanair.com/ie/en/trip/flights/bags"
+- **Actuual Output**: "What bags are you taking on board?” page is loaded: "https://www.ryanair.com/ie/en/trip/flights/bags"
 
+![Capture2](https://github.com/Babajide-olawoye/GeneysChallenge/assets/48318533/e1296328-ad0a-4545-bdfe-cdfd0b4b8caa)
